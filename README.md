@@ -65,6 +65,26 @@ Manual testing was prioritized to ensure functional coverage and catch UI/API in
 - UI responsiveness
 - API behavior via Postman (positive/negative flows)
 
+# Manual Testing
+
+![Pass Fail Chart](https://quickchart.io/chart?c={type:'pie',data:{labels:['Pass','Fail'],datasets:[{data:[41.9,58.1]}]}})
+
+## Pass/Fail Breakdown
+- **Pass Rate**: 41.9%
+- **Fail Rate**: 58.1%
+
+---
+
+# API Testing
+
+![Pass Fail Chart](https://quickchart.io/chart?c={type:'pie',data:{labels:['Pass','Fail'],datasets:[{data:[44.8,55.2]}]}})
+
+## Pass/Fail Breakdown
+- **Pass Rate**: 44.8%
+- **Fail Rate**: 55.2%
+
+
+
 Manual test evidence is provided through structured test case documentation.
 
 ### Cypress Automation (Secondary, Placeholder-Based)
