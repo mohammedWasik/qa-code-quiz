@@ -1,4 +1,17 @@
+# QA Code Quiz Project
+
+This repository contains a QA-focused project setup for demonstrating manual testing, API testing, unit testing (Jest), and UI automation using Cypress.
+
+## 🛠️ Project Stack
+
+- **Backend Mock API:** Node.js (`mockedAPI/index.js`)
+- **Unit Testing:** Jest
+- **API Testing Tool:** Postman (manual)
+- **UI Automation:** Cypress
+- **Package Manager:** npm
+
 ##  How to Run
+
 > **Note:** All commands below are to be run from the root of the project directory.
 >  **Important:** Keep an eye on your terminal output for any port changes. Ports for the mock server or API may vary depending on your environment.
 
@@ -87,7 +100,7 @@ Manual testing was prioritized to ensure functional coverage and catch UI/API in
 
 Manual test evidence is provided through structured test case documentation.
 Detailed notes and results for manual testing can be found here:  
-[Manual Testing Report (Google Sheets)](https://docs.google.com/spreadsheets/d/1pNWuY_rC9-iMR1zhXWPgXFsl_lDmdcVY/edit?usp=sharing&ouid=106020571511058470684&rtpof=true&sd=true)
+#### [Manual Testing Report (Google Sheets)](https://docs.google.com/spreadsheets/d/1pNWuY_rC9-iMR1zhXWPgXFsl_lDmdcVY/edit?usp=sharing&ouid=106020571511058470684&rtpof=true&sd=true)
 
 
 ### Cypress Automation (Secondary, Placeholder-Based)
