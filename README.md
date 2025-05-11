@@ -1,12 +1,137 @@
-# QA Testing Quiz
+##  How to Run
+> **Note:** All commands below are to be run from the root of the project directory.
+>  **Important:** Keep an eye on your terminal output for any port changes. Ports for the mock server or API may vary depending on your environment.
 
-### Scenario
-The frontend team has developed a prototype login portal for an up and coming platform.
-However, they have not implemented any testing yet and it is up to you to do so.
 
-As the QA developer, what is tested and how it is tested is up to you.
-Management simply asks that these tests provide as much evidence as possible of the platform's reliability.
 
-### Notes
-- Submission must include a link to a public fork/clone of this repository
-- We typically use Jest for testing node.js/API related logic and Cypress for testing UI functionality, however, you are more than welcome to use any testing framework you desire so long as you are able to provide reasonable justification
+### 1. Start the Mocked Web App (Manual Testing)
+
+```bash
+npm install
+npm start
+```
+
+Open your browser to `http://localhost:3000` and perform manual UI testing.
+
+### 2. Start the Mock API (Postman Testing)
+
+```bash
+node mockedAPI/index.js
+```
+
+The API will be available at `http://localhost:9999`. You can manually test the endpoints using Postman.
+
+
+### 3. Run Unit Tests (Jest)
+
+**Important:** Before running Jest tests, **stop the manually started mock server**.  
+Supertest creates its own instance of the server during testing to avoid port conflicts.
+
+```bash
+npm run test:unit
+```
+
+This will execute all Jest-based unit and integration tests located in the `__tests__/` directory.
+
+
+### 4. Run Cypress UI Automation
+
+```bash
+npx cypress open
+```
+
+Choose a test and run it from the Cypress UI.
+
+## Test Types
+
+| Type           | Tool          | Location              | Status   |
+|----------------|---------------|------------------------|----------|
+| Manual UI      | Browser       | Localhost:3000         | Done   |
+| API (Manual)   | Postman       | localhost:9999         | Done   |
+| Unit Testing   | Jest          | `mockedAPI/__tests__/`           | Done   |
+| UI Automation  | Cypress       | `cypress/`             | Done   |
+
+## Testing Strategy & Justification
+
+The frontend login portal provided was in a prototype stage and lacked basic accessibility and automation hooks such as `id`, `class`, or `label` attributes. Additionally, the backend API had multiple issues and inconsistent behavior. Given these constraints, the following strategy was adopted:
+
+###  Manual Testing (Primary Focus)
+
+Manual testing was prioritized to ensure functional coverage and catch UI/API integration issues that automation could miss in an unstable build. Tests included:
+
+- Input validation (empty, invalid, and valid credentials)
+- State behavior
+- Error message rendering
+- UI responsiveness
+- API behavior via Postman (positive/negative flows)
+
+Manual test evidence is provided through structured test case documentation.
+
+### Cypress Automation (Secondary, Placeholder-Based)
+
+While full automation was limited due to missing selectors, Cypress tests were still implemented using available `placeholder` text in the input fields. These tests cover:
+
+- Typing into email/password fields
+- Simulating login clicks
+- Basic visual checks (page load, redirection)
+
+This demonstrates future readiness for automation once the frontend is stabilized and improved for testability.
+
+### Unit Testing with Jest
+To enable API testing with Jest and Supertest, the Express app instance needed to be exported:
+
+```js
+// At the end of mockedAPI/index.js 
+module.exports = app;
+```
+
+This allows Supertest to import the app and send mock HTTP requests:
+
+```js
+const supertest = require("supertest");
+const app = require("../index.js");
+const fs = require("fs");
+
+describe("GET at /", () => {
+  test('user should get "Backend API" ', async () => {
+    const res = await supertest(app).get("/");
+
+    expect(res.text).toBe("Backend API");
+  });
+});
+```
+
+---
+
+**Note:** Without exporting `app`, Supertest cannot hook into the server instance to perform tests. Hence had to make changes to backend code.
+
+
+---
+
+### 🔍 Known Issues & Limitations
+
+- Lack of semantic HTML (`label`, `for`, `id`) reduces accessibility and automation reliability
+- Lack of responsiveness amongst diverse devices
+- API instability led to intermittent failures in automated tests
+- No input sanitization or error handling present in current implementation
+
+---
+
+### Future Enhancements
+
+For reliable automation and better test coverage:
+
+- Developers should add `data-testid`, `id`, or `aria-label` attributes to key UI elements
+- API endpoints need stable mocks or better contract definitions
+- API also needs a lot of validation as currently no validation has been used
+- Frontend form logic should handle edge cases (e.g., input validation, empty states)
+
+
+
+
+
+##  Author
+
+- **Name:** Mohammed Wasik  
+- **GitHub:** [@mohammedWasik](https://github.com/mohammedWasik)
+
