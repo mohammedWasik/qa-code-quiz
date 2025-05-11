@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "5ad59202-c1e3-4a7e-ae1b-02de313dd265",
+		"name": "MeldCx mock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24886258",
+		"_collection_link": "https://mo2222-3284.postman.co/workspace/MeldCx~8c730f46-fe73-43c6-b155-5296f9052e35/collection/24886258-5ad59202-c1e3-4a7e-ae1b-02de313dd265?action=share&source=collection_link&creator=24886258"
+	},
+	"item": [
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"1\",\n  \"name\": \"1\",\n  \"password\": \"1\",\n  \"favouriteFruit\": \"1\",\n  \"favouriteMovie\": \"1\",\n  \"favouriteNumber\": \"1\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"api\",\n  \"name\": \"asd\",\n  \"password\": \"asd!\",\n  \"favouriteFruit\": \"adsf\",\n  \"favouriteMovie\": \"asd\",\n  \"favouriteNumber\": \"2asd3>\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user?username=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\":\"dummytree\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user?username=SomeUser_name",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "SomeUser_name"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
