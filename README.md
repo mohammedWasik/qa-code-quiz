@@ -86,6 +86,9 @@ Manual testing was prioritized to ensure functional coverage and catch UI/API in
 
 
 Manual test evidence is provided through structured test case documentation.
+Detailed notes and results for manual testing can be found here:  
+[Manual Testing Report (Google Sheets)](https://docs.google.com/spreadsheets/d/1pNWuY_rC9-iMR1zhXWPgXFsl_lDmdcVY/edit?usp=sharing&ouid=106020571511058470684&rtpof=true&sd=true)
+
 
 ### Cypress Automation (Secondary, Placeholder-Based)
 
